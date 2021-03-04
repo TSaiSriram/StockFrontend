@@ -11,7 +11,8 @@ export class StockComponent implements OnInit {
   public stock = [];
   public scan = false;
   public rows;
-
+  responseData: any;
+  
   constructor(public dataService: DataService) { }
 
   stockForm = new FormGroup({
@@ -28,9 +29,10 @@ this.dataService.getData();
     });
   }
 
-  submit() {
+  async submit() {
     console.log(this.stockForm.getRawValue())
-  this.dataService.searchCompanyStockData(this.stockForm.getRawValue())
+  let response =await this.dataService.searchCompanyStockData(this.stockForm.getRawValue());
+  this.responseData = Object.values(response["StockData"][0]);
   }
 
 }

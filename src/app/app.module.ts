@@ -8,10 +8,12 @@ import { StockComponent } from './components/stock/stock.component';
 import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartDataComponent } from './components/chart-data/chart-data.component';
 @NgModule({
   declarations: [
     AppComponent,
-    StockComponent
+    StockComponent,
+    ChartDataComponent
   ],
   imports: [
     BrowserModule,
