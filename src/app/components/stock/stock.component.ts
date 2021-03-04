@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -13,6 +14,12 @@ export class StockComponent implements OnInit {
 
   constructor(public dataService: DataService) { }
 
+  stockForm = new FormGroup({
+    companyName: new FormControl(''),
+    userName: new FormControl(''),  
+    });
+
+  
   ngOnInit(): void {
     this.rows = [];
 this.dataService.getData();
@@ -22,7 +29,8 @@ this.dataService.getData();
   }
 
   submit() {
-    this.scan = true;
+    console.log(this.stockForm.getRawValue())
+  this.dataService.searchCompanyStockData(this.stockForm.getRawValue())
   }
 
 }
